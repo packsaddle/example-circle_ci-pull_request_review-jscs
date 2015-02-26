@@ -11,7 +11,7 @@ if [ -n "${TRAVIS_PULL_REQUEST}" ] && [ "${TRAVIS_PULL_REQUEST}" != "false" ]; t
   # git checkout -qf FETCH_HEAD
 
   echo gem install
-  gem install --no-document checkstyle_filter-git saddler saddler-reporter-github
+  gem install checkstyle_filter-git saddler saddler-reporter-github
 
   echo git diff
   git diff --name-only origin/master
