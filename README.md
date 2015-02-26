@@ -1,5 +1,4 @@
-# example-travis_ci-pull_request_review-jscs 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Coverage Status][coveralls-image]][coveralls-url]
+# example-travis_ci-pull_request_review-jscs
 
 run jscs and pull request review comment
 
