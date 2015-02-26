@@ -1,26 +1,42 @@
 # example-travis_ci-pull_request_review-jscs 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Coverage Status][coveralls-image]][coveralls-url]
 
-The best module ever.
+run jscs and pull request review comment
 
+[Actual script for CircleCI](./bin/run-jscs.sh)
 
-## Install
+```
+# circle.yml
+test:
+  pre:
+    - bin/run-jscs.sh
 
-```bash
-$ npm install --save example-travis-ci-pull-request-review-jscs
+# bin/run-jscs.sh
+#!/bin/bash
+set -v
+if [ "${CIRCLE_BRANCH}" != "master" ]; then
+  gem install --no-document checkstyle_filter-git saddler saddler-reporter-github
+
+  git diff --name-only origin/master \
+   | grep -e '\.js$' \
+   | xargs ./node_modules/gulp-jscs/node_modules/.bin/jscs \
+       --reporter checkstyle \
+   | checkstyle_filter-git diff origin/master \
+   | saddler report \
+      --require saddler/reporter/github \
+      --reporter Saddler::Reporter::Github::PullRequestReviewComment
+fi
+
+exit 0
 ```
 
+If you prefer to exec *post* `test`, you can set this. See: [Configuring CircleCI - CircleCI](https://circleci.com/docs/configuration#phases)
 
-## Usage
+## Setting
 
-```javascript
-var exampleTravisCiPullRequestReviewJscs = require('example-travis-ci-pull-request-review-jscs');
-exampleTravisCiPullRequestReviewJscs(); // "awesome"
-```
+[Environment variables - CircleCI](https://circleci.com/docs/environment-variables)
 
-## API
-
-_(Coming soon)_
+set your own `GITHUB_ACCESS_TOKEN`
 
 
 ## Contributing
