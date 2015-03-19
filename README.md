@@ -17,7 +17,7 @@ if [ "${CIRCLE_BRANCH}" != "master" ]; then
   gem install --no-document checkstyle_filter-git saddler saddler-reporter-github
 
   git diff --name-only origin/master \
-   | grep -e '\.js$' \
+   | grep '.*\.js$' \
    | xargs ./node_modules/gulp-jscs/node_modules/.bin/jscs \
        --reporter checkstyle \
    | checkstyle_filter-git diff origin/master \
