@@ -37,17 +37,13 @@ If you prefer to exec *post* `test`, you can set this. See: [Configuring CircleC
 
 set your own `GITHUB_ACCESS_TOKEN`
 
-
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [gulp](http://gulpjs.com/).
 
-
 ## License
 
 Copyright (c) 2015 sanemat. Licensed under the MIT license.
-
-
 
 [npm-url]: https://npmjs.org/package/example-travis-ci-pull-request-review-jscs
 [npm-image]: https://badge.fury.io/js/example-travis-ci-pull-request-review-jscs.svg
